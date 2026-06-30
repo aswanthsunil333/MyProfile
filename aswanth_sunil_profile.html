@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aswanth Sunil | PhD Scholar in Data Science & TRA</title>
+    <style>
+        :root {
+            --dark-bg: #090d16;
+            --card-bg: #131a26;
+            --accent-glow: #38bdf8;
+            --accent-muted: #0ea5e9;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-line: #223147;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 4rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background Graphics Layer */
+        .bg-graphic-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(9, 13, 22, 0) 70%);
+            top: -100px;
+            right: -100px;
+            z-index: -1;
+            pointer-events: none;
+            animation: pulseGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Hero Layout */
+        header {
+            background: linear-gradient(180deg, #111827 0%, var(--dark-bg) 100%);
+            padding: 5rem 2rem 3rem 2rem;
+            border-bottom: 1px solid var(--border-line);
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .profile-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-muted), #22c55e);
+            z-index: -1;
+            opacity: 0.4;
+            filter: blur(8px);
+            animation: rotationGlow 6s linear infinite;
+        }
+
+        @keyframes rotationGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-glow);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-wrapper:hover .profile-img {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h2 {
+            font-size: 1.4rem;
+            color: var(--accent-glow);
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .ln-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #0077b5;
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(0, 119, 181, 0.3);
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+        }
+
+        .ln-btn:hover {
+            background-color: #005a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5);
+        }
+
+        /* main layout structures */
+        main {
+            max-width: 1050px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 900px) {
+            main { grid-template-columns: 1fr; }
+            .hero-container { flex-direction: column; text-align: center; gap: 1.5rem; }
+            .meta-grid { justify-content: center; }
+        }
+
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-line);
+            padding: 2.2rem;
+            border-radius: 14px;
+            margin-bottom: 2rem;
+            transition: border-color 0.3s standard, transform 0.3s ease;
+        }
+
+        section:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.8rem;
+            border-left: 4px solid var(--accent-glow);
+            padding-left: 0.75rem;
+        }
+
+        /* timeline aesthetics */
+        .academic-timeline {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border-line);
+        }
+
+        .time-node {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .time-node:last-child { margin-bottom: 0; }
+
+        .time-node::before {
+            content: '';
+            position: absolute;
+            left: calc(-1.5rem - 6px);
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-glow);
+            transition: transform 0.2s;
+        }
+
+        .time-node:hover::before {
+            transform: scale(1.4);
+        }
+
+        .time-node.current::before {
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        .node-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .node-title { font-weight: 600; color: var(--text-main); font-size: 1.05rem; }
+        .node-date { font-size: 0.8rem; color: var(--accent-glow); font-weight: 600; background: rgba(56, 189, 248, 0.1); padding: 2px 8px; border-radius: 12px; }
+        .node-org { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.6rem; font-weight: 500; }
+        .node-desc { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* animated skill metrics bars */
+        .bar-container { margin-bottom: 1.2rem; }
+        .bar-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.4rem; color: var(--text-muted); }
+        .bar-bg { background: var(--dark-bg); height: 7px; border-radius: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent-muted), var(--accent-glow)); border-radius: 4px; transform-origin: left; animation: slideProgress 1.5s cubic-bezier(0.1, 1, 0.1, 1) forwards; }
+
+        @keyframes slideProgress {
+            from { transform: scaleX(0); }
+        }
+
+        /* modern technical element tags */
+        .skills-tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            list-style: none;
+        }
+
+        .skills-tag-list li {
+            background: var(--dark-bg);
+            border: 1px solid var(--border-line);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+
+        .skills-tag-list li:hover {
+            border-color: var(--accent-glow);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateY(-1px);
+        }
+
+        /* Research Project Layout */
+        .proj-item { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .proj-item:last-child { margin-bottom: 0; padding-bottom: 0; border: none; }
+        .proj-name { color: var(--accent-glow); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .proj-text { color: var(--text-muted); font-size: 0.88rem; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-graphic-glow"></div>
+
+    <header>
+        <div class="hero-container">
+            <div class="profile-wrapper">
+                <!-- Change this filename to your image file "Aswanth Sunil-Photo (1).jpg" to view it live -->
+                <img src="aswanth_headshot.png" alt="Aswanth Sunil" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80'">
+            </div>
+            <div class="hero-text">
+                <h1>Aswanth Sunil</h1>
+                <h2>Teaching cum Research Assistant &bull; VIT Vellore</h2>
+                <div class="meta-grid">
+                    <div>📧 aswanthsunil333@gmail.com</div>
+                    <div>📱 +91 9074201081</div>
+                    <div>📍 Vellore, Tamil Nadu</div>
+                </div>
+                <a href="https://www.linkedin.com/in/aswanth-sunil-5b6470210/" target="_blank" class="ln-btn">
+                    <svg style="width:16px; height:16px; margin-right:8px; fill:currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Left Side Column -->
+        <div class="content-left">
+            <section>
+                <h3>Research Statement</h3>
+                <p style="color: var(--text-muted); font-size: 0.98rem;">
+                    An academically driven professional and Teaching cum Research Assistant (TRA) pursuing doctoral research in Data Science at VIT Vellore. Integrates institutional pedagogic expertise gained as a former Assistant Professor with analytical foundations established during a specialized Graduate Apprenticeship at the Indian Space Research Organization (ISRO). Focuses on bridging educational frameworks with advanced technologies, machine learning concepts, and interactive data visualization systems to optimize modern learning environments.
+                </p>
+            </section>
+
+            <section>
+                <h3>Academic & Professional Timeline</h3>
+                <div class="academic-timeline">
+                    <div class="time-node current">
+                        <div class="node-meta">
+                            <span class="node-title">Teaching cum Research Assistant</span>
+                            <span class="node-date">June 2026 – Present</span>
+                        </div>
+                        <div class="node-org">Vellore Institute of Technology (VIT), Vellore</div>
+                        <p class="node-desc">Engaged in doctoral research while delivering synchronized instructional coordination and academic mentorship pathways within the university ecosystem.</p>
+                    </div>
+
+                    <div class="time-node">
+                        <div class="node-meta">
+                            <span class="node-title">Assistant Professor - Data Science</span>
+                            <span class="node-date">July 2025 – June 2026</span>
+                        </div>
+                        <div class="node-org">Asian School of Business, Trivandrum</div>
+                        <p class="node-desc">Delivered structured lectures and mentored students in AI, Python programming, data analytics, and machine learning models. Coordinated hands-on project problem-solving routines.</p>
+                    </div>
+
+                    <div class="time-node">
+                        <div class="node-meta">
+                            <span class="node-title">Graduate Apprentice</span>
+                            <span class="node-date">June 2024 – June 2025</span>
+                        </div>
+                        <div class="node-org">ISRO Inertial Systems Unit (IISU), Trivandrum</div>
+                        <p class="node-desc">Focused on telemetry data analysis for spacecraft launch tracking structures. Maintained interface analytics architectures using custom Python/MATLAB components and Dash-based web environments.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Academic History</h3>
+                <div class="academic-timeline">
+				
+				    <div class="time-node current">
+                        <div class="node-meta">
+                            <span class="node-title">Ph.D. Data Science</span>
+                            <span class="node-date">2026 – Present</span>
+                        </div>
+                        <div class="node-org">Vellore Institute of Technology, Vellore Campus</div>
+                        <p class="node-desc">School of Advanced Science</p>
+                    </div>
+					
+                    <div class="time-node">
+                        <div class="node-meta">
+                            <span class="node-title">M.Sc. Data Science</span>
+                            <span class="node-date">2022 – 2024</span>
+                        </div>
+                        <div class="node-org">Bharathiar University</div>
+                        <p class="node-desc">Graduated with a CGPA of 8.29 out of 10.</p>
+                    </div>
+
+                    <div class="time-node">
+                        <div class="node-meta">
+                            <span class="node-title">B.Voc. Information Technology</span>
+                            <span class="node-date">2019 – 2022</span>
+                        </div>
+                        <div class="node-org">Christ College, Irinjalakuda (University of Calicut)</div>
+                        <p class="node-desc">Graduated with a CGPA of 5.74 out of 6.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Side Column -->
+        <div class="content-right">
+            <section>
+                <h3>Core Aptitudes</h3>
+                
+                <div class="bar-container">
+                    <div class="bar-label"><span>Planning</span><span>98%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 98%"></div></div>
+                </div>
+                
+                <div class="bar-container">
+                    <div class="bar-label"><span>Problem Solving</span><span>95%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 95%"></div></div>
+                </div>
+
+                <div class="bar-container">
+                    <div class="bar-label"><span>Management</span><span>95%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 95%"></div></div>
+                </div>
+
+                <div class="bar-container">
+                    <div class="bar-label"><span>Leadership</span><span>80%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 80%"></div></div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Methodological Toolbox</h3>
+                <ul class="skills-tag-list">
+                    <li>Python Programming</li>
+                    <li>R Language</li>
+                    <li>MATLAB Systems</li>
+                    <li>Machine Learning</li>
+                    <li>Advanced Statistics</li>
+                    <li>Data Dashboards</li>
+                    <li>MySQL Systems</li>
+                    <li>Generative AI Tools</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Academic Work & Projects</h3>
+                <div class="proj-item">
+                    <div class="proj-name">RyNA</div>
+                    <div class="proj-text">An AI-powered crowd analyzer designed for information systems optimization during railway transit.</div>
+                </div>
+                <div class="proj-item">
+                    <div class="proj-name">Deep Learning for Field Monitoring</div>
+                    <div class="proj-text">A descriptive analytics paradigm assessing machine learning algorithms for agricultural systems.</div>
+                </div>
+                <div class="proj-item">
+                    <div class="proj-name">Cloud-Based Mobility Enhancer</div>
+                    <div class="proj-text">An assistive learning and motor stimulatory concept platform for neural management environments.</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>
